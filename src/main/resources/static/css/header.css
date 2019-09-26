@@ -1,0 +1,46 @@
+.navbar{
+  background-image: linear-gradient(80deg, #60DAF5, #e6ffff);
+  padding: 1em 1em;
+
+}
+a{
+  color: #000;
+}
+  .input{
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid #e4e7ed;
+    background-color: #fff;
+    width: 100%
+  }
+
+  .input-select {
+    padding: 0 15px;
+    background: #fff;
+    border: 1px solid #e4e7ed;
+    height: 40px
+  }
+  form {
+    position: relative
+  }
+
+  form .input-select {
+    margin-right: -5px;
+    width: 110px;
+    border-radius: 40px 0 0 40px;
+  }
+
+  form .input {
+    width: calc(100% - 260px);
+    margin-right: -4px;
+  }
+
+  form .search-btn {
+    height: 40px;
+    width: 100px;
+    background: #A9F5E1;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 0 40px 40px 0;
+  }
