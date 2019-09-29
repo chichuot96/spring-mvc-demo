@@ -1,10 +1,11 @@
-package vn.topica.itlab4.model;
+package vn.topica.itlab4.form;
 
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Product {
+public class ProductForm {
 	private int id;
 	private String name;
 	private String imgUrl;
@@ -59,15 +60,5 @@ public class Product {
 		SimpleDateFormat df = new SimpleDateFormat(pattern);
 		this.dateInput = df.format(date);
 	}
-	public Product(int id, String name, String imgUrl, int price, int sale, int reserve, String date) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.imgUrl = imgUrl;
-		this.price = price;
-		this.sale = sale;
-		this.reserve = reserve;
-		this.dateInput=date;
+
 	}
-	
-}

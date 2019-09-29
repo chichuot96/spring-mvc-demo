@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+	
+</script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+	
+</script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" />
+<link rel="stylesheet" th:href="@{/css/index.css}" />
+<link rel="stylesheet" th:href="@{/css/list.css}" />
+<link rel="stylesheet" th:href="@{/css/footer.css}" />
+<link rel="stylesheet" th:href="@{/css/header.css}" />
+<script type="text/javascript" th:src="@{/js/index.js}"></script>
+<script type="text/javascript" th:src="@{/js/starRate.js}"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.css" />
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css" />
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.min.js"></script>
+<style>
+</style>
+<title>Document</title>
+</head>
+<body>
+	<section>
+		<nav class="navbar navbar-expand-md navbar-light">
+			<div class="container">
+				<a class="navbar-brand" href="#"> <img src="img/logo.png"
+					width="50px" alt="">
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse row"
+					id="navbarSupportedContent">
+					<div class="col-md-2">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> Menu </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#new-pro">New Product</a> <a
+								class="dropdown-item" href="#best-seller">Best seller</a> <a
+								class="dropdown-item" href="#trend">Trends</a> <a
+								class="dropdown-item" href="#popular">Popular</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="contact-us.html">Contact us</a> <a
+								class="dropdown-item" th:href="@{/login}">Login</a> <a
+								class="dropdown-item" th:href="@{/register}">Register</a>
+						</div>
+					</div>
+					<div class="col-md-7">
+						<form th:action="@{/search}" method="POST">
+							<input class="input" placeholder="Search here" style="display:inline-block">
+							<input type="submit" class=" search-btn" value="Search" >
+						</form>
+					</div>
+					<div class="col-md-3" style="text-align: center">
+						<div class="row">
+							<div class="col-6">
+
+								<a href="#">
+									<div class="icons">
+										<i class="fas fa-shopping-basket"></i>
+									</div> <span> Your cart </span>
+								</a>
+
+							</div>
+							<div class="col-6" th:if="${session.username}">
+								<div class="icons">
+									<i class="fas fa-user-edit"></i>
+								</div>
+								<div class="dropdown">
+									<button type="button" class="btn btn-primary dropdown-toggle"
+										data-toggle="dropdown">
+										<span>Hi, <span th:utext="${session.username}"></span></span>
+									</button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" th:href="@{/logout}">Logout</a> <a
+											class="dropdown-item" href="#">Edit</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-6" th:unless="${session.username}">
+								<div class="icons">
+									<i class="fas fa-user-edit"></i>
+								</div>
+								<div class="dropdown">
+									<button type="button" class="btn btn-primary dropdown-toggle"
+										data-toggle="dropdown">Account</button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" th:href="@{/login}">Login</a> <a
+											class="dropdown-item" th:href="@{/register}">Register</a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</section>
+
+	<section>
+
+		<div id="s1">
+			<div id="cool-down">
+				<div class="cd-time">
+					<span id="days"></span> <span class="cd-txt">days</span>
+				</div>
+				<div class="cd-time">
+					<span id="hours"></span> <span class="cd-txt">hours</span>
+				</div>
+				<div class="cd-time">
+					<span id="mins"></span> <span class="cd-txt">mins</span>
+				</div>
+				<div class="cd-time">
+					<span id="secs"></span> <span class="cd-txt">secs</span>
+				</div>
+			</div>
+			<div id="hot-deal">
+				<h2>Christmas</h2>
+				<span>new collection up to 50% off</span><br> <a href="#"
+					class="btn btn-rounded btn-danger">shop now</a>
+			</div>
+		</div>
+		<div class="container categories">
+			<div class="row">
+				<div class="back-gr"></div>
+				<div class="col-6 cate-pro">
+					<a href="#" style=""> <img class="banner"
+						th:src="@{/images/banner-1.png}" alt=""> <img
+						class="inner-banner"
+						src="https://ld-magento.template-help.com/magento_62086/pub/static/frontend/TemplateMonster/theme015/en_US/images/banner-1-3.png"
+						alt="">
+					</a>
+				</div>
+				<div class="col-6 cate-pro">
+					<a href="#" style=""> <img class="banner"
+						th:src="@{/images/banner-2.png}" alt=""> <img
+						class="inner-banner"
+						src="https://ld-magento.template-help.com/magento_62086/pub/static/frontend/TemplateMonster/theme015/en_US/images/banner-2-3.png"
+						alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="list-product slider">
+			<div class="row">
+				<div class="col-md-3">
+				
+				</div>
+				<div class="col-md-9">
+					<div class="row" style="width:90%;margin-left:5%; margin-top:30px;">
+						<th:block th:each="product : ${listProduct}">
+					          <div class="col-lg-4 col-md-6 mb-4">
+					            <div class="card h-100">
+					              <a href="#"><img class="card-img-top" th:src="${product.imgUrl}" alt="" style=""></a>
+					              <div class="card-body">
+					                <h4 class="card-title">
+					                  <a href="#" th:utext="${product.name}"></a>
+					                </h4>
+					                <h5>$<span th:utext="${product.price}"> </span></h5>
+					                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+					              </div>
+					              <div class="card-footer">
+					                <div class="star-rate" >
+						                <div class="star-inner"></div>
+						                <div class="count"></div>
+						              </div>
+					              </div>
+					            </div>
+					          </div>
+		
+						</th:block>
+			</div>
+				</div>	
+			</div>
+		</div>
+	</section>
+	<section>
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-4 finfo">
+						<a href="#">privacy policy</a> <a href="#">term & condition</a> <a
+							href="#">about us</a>
+					</div>
+					<div class="col-4">
+						<h1>Merry</h1>
+						<h4>Christmas</h4>
+						<div class="icon-footer row">
+							<a href="#" class="col-4"><img
+								src="https://www.iconsdb.com/icons/preview/black/twitter-3-xl.png"
+								alt=""></a> <a href="#" class="col-4"><img
+								src="https://www.iconsdb.com/icons/preview/black/pinterest-3-xl.png"
+								alt=""></a> <a href="#" class="col-4"><img
+								src="https://www.iconsdb.com/icons/preview/black/instagram-xl.png"
+								alt=""></a>
+						</div>
+						<div class="row">
+							<div class="col-6" id="div"></div>
+						</div>
+						<div class="container">
+							<p>weekly newsletter</p>
+							<div class="bor email">name@email.com</div>
+							<div class="bor">subscribe</div>
+						</div>
+						<div class="row icon-footer">
+							<a href="#" class="col-3"><img
+								src="https://www.iconsdb.com/icons/preview/black/amex-xxl.png"
+								alt=""></a> <a href="#" class="col-3"><img
+								src="https://www.iconsdb.com/icons/preview/black/paypal-3-xxl.png"
+								alt=""></a> <a href="#" class="col-3"><img
+								src="https://www.iconsdb.com/icons/preview/black/mastercard-xxl.png"
+								alt=""></a> <a href="#" class="col-3"><img
+								src="https://www.iconsdb.com/icons/preview/black/visa-xxl.png"
+								alt=""></a>
+						</div>
+						<div class="copyright">&copy 2019</div>
+					</div>
+
+					<div class="col-4 finfo">
+						<a href="#">shipping info</a> <a href="#">returns/exchanges</a> <a
+							href="#">contact</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</section>
+</body>
+  <script type="text/javascript">
+
+  function convert(a) {
+    var percent;
+    if (a < 5) {
+      percent = [a / 5] * 100;
+    } else {
+      percent = 100;
+    }
+    var round = `${(percent)}%`;
+    return round;
+  };
+  var x = $('.star-inner');
+  for (var i = 0; i < x.length; i++) {
+    x[i].style.width = convert(Math.random() * 3 + 2);
+  }
+  var y = $('.count');
+  for (var j = 0; j < y.length; j++) {
+    y[j].innerHTML = '(' + Math.floor(Math.random() * 800 + 10) + ')';
+  }
+  </script>
+  </html>

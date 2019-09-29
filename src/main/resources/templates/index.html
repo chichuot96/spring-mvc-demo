@@ -1,260 +1,643 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
-	
-</script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
-	
-</script>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" />
-<link rel="stylesheet" th:href="@{/css/index.css}" />
-<link rel="stylesheet" th:href="@{/css/list.css}" />
-<link rel="stylesheet" th:href="@{/css/footer.css}" />
-<link rel="stylesheet" th:href="@{/css/header.css}" />
-<script type="text/javascript" th:src="@{/js/index.js}"></script>
-<script type="text/javascript" th:src="@{/js/starRate.js}"></script>
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.css" />
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css" />
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick.min.js"></script>
-<style>
-</style>
-<title>Document</title>
+<title>Little Closet</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Little Closet template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-4.1.2/bootstrap.min.css}">
+<link th:href="@{/plugins/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="css/main_styles.css">
+<link rel="stylesheet" type="text/css" href="css/responsive.css">
 </head>
 <body>
-	<section>
-		<nav class="navbar navbar-expand-md navbar-light">
-			<div class="container">
-				<a class="navbar-brand" href="#"> <img src="img/logo.png"
-					width="50px" alt="">
+
+<!-- Menu -->
+
+<div class="menu">
+
+	<!-- Search -->
+	<div class="menu_search">
+		<form action="#" id="menu_search_form" class="menu_search_form">
+			<input type="text" class="search_input" placeholder="Search Item" required="required">
+			<button class="menu_search_button"><img src="images/search.png" alt=""></button>
+		</form>
+	</div>
+	<!-- Navigation -->
+	<div class="menu_nav">
+		<ul>
+			<li><a href="#">Women</a></li>
+			<li><a href="#">Men</a></li>
+			<li><a href="#">Kids</a></li>
+			<li th:if="${session.role}==true"> <a th:href="@{/listproduct}">List Product</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</div>
+	<!-- Contact Info -->
+	<div class="menu_contact">
+		<div class="menu_phone d-flex flex-row align-items-center justify-content-start">
+			<div><div><img src="images/phone.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
+			<div>+1 912-252-7350</div>
+		</div>
+		<div class="menu_social">
+			<ul class="menu_social_list d-flex flex-row align-items-start justify-content-start">
+				<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+				<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="super_container">
+
+	<!-- Header -->
+
+	<header class="header">
+		<div class="header_overlay"></div>
+		<div class="header_content d-flex flex-row align-items-center justify-content-start">
+			<div class="logo">
+				<a href="#">
+					<div class="d-flex flex-row align-items-center justify-content-start">
+						<div><img src="images/logo_1.png" alt=""></div>
+						<div>Gift Shop</div>
+					</div>
 				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+			</div>
+			<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
+			<nav class="main_nav">
+				<ul class="d-flex flex-row align-items-start justify-content-start">
+					<li class="active"><a href="#">Women</a></li>
+					<li><a href="#">Men</a></li>
+					<li><a href="#">Kids</a></li>
+					<li><a href="#">Contact</a></li>
+					
+				</ul>
+			</nav>
+			<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
+				<!-- Search -->
+				<div class="header_search">
+					<form th:action="@{/search}" method="POST" id="header_search_form">
+						<input type="text" class="search_input" placeholder="Search Item" required="required">
+						<button class="header_search_button"><img src="images/search.png" alt=""></button>
+					</form>
+				</div>
+				<!-- User -->
+				<div class="user" th:unless="${session.username}">
+					<div class="dropdown">
+				    <button  type="button" data-toggle="dropdown" style="border:0;background-color:#fff;">
+							<div>
+								<img src="images/user.svg" alt="https://www.flaticon.com/authors/freepik">
+							</div>
+							
+				    </button>
+						<div class="dropdown-menu">
+					     <a class="dropdown-item"th:href="@{/login}">Login</a>
+					     <a class="dropdown-item" th:href="@{/register}">Register</a>
+					   </div>
+				  </div>
+				</div>
+								<div class="user" th:if="${session.username}">
+					<div class="dropdown">
+				    <button  type="button" data-toggle="dropdown" style="border:0;background-color:#fff;">
+							<div>
+								<img src="images/user.svg" alt="https://www.flaticon.com/authors/freepik">
+								<div>2</div>
+							</div>
+							<span>Hi, <span th:utext="${session.username}"></span></span>
+				    </button>
+						<div class="dropdown-menu">
+					     <a class="dropdown-item" href="#">Information</a>
+					     <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+					   </div>
+				  </div>
+				</div>
+				<!-- Cart -->
+				<div class="cart"><a href="cart.html"><div><img class="svg" src="images/cart.svg" alt="https://www.flaticon.com/authors/freepik"><div>2</div></div></a></div>
+				<!-- Phone -->
+				<div class="header_phone d-flex flex-row align-items-center justify-content-start">
+					<div><div><img src="images/phone.svg" alt="https://www.flaticon.com/authors/freepik"></div></div>
+					<div>0987654321</div>
+				</div>
+			</div>
+		</div>
+	</header>
 
-				<div class="collapse navbar-collapse row"
-					id="navbarSupportedContent">
-					<div class="col-md-2">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> Menu </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#new-pro">New Product</a> <a
-								class="dropdown-item" href="#best-seller">Best seller</a> <a
-								class="dropdown-item" href="#trend">Trends</a> <a
-								class="dropdown-item" href="#popular">Popular</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="contact-us.html">Contact us</a> <a
-								class="dropdown-item" th:href="@{/login}">Login</a> <a
-								class="dropdown-item" th:href="@{/register}">Register</a>
+	<div class="super_container_inner">
+		<div class="super_overlay"></div>
+
+		<!-- Home -->
+
+		<div class="home">
+			<!-- Home Slider -->
+			<div class="home_slider_container">
+				<div class="owl-carousel owl-theme home_slider">
+
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image" style="background-image:url(images/home.jpg)"></div>
+						<div class="container fill_height">
+							<div class="row fill_height">
+								<div class="col fill_height">
+									<div class="home_container d-flex flex-column align-items-center justify-content-start">
+										<div class="home_content">
+											<div class="home_title">New Arrivals</div>
+											<div class="home_subtitle">Christmas Gift</div>
+											<div class="home_items">
+												<div class="row">
+													<div class="col-sm-3 offset-lg-1">
+														<div class="home_item_side"><a href="product.html"><img src="https://images.pexels.com/photos/1708601/pexels-photo-1708601.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""></a></div>
+													</div>
+													<div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
+														<div class="product home_item_large">
+															<div class="product_tag d-flex flex-column align-items-center justify-content-center">
+																<div>
+																	<div>from</div>
+																	<div>$3<span>.99</span></div>
+																</div>
+															</div>
+															<div class="product_image"><img src="https://images.pexels.com/photos/326581/pexels-photo-326581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""></div>
+															<div class="product_content">
+																<div class="product_info d-flex flex-row align-items-start justify-content-start">
+																	<div>
+																		<div>
+																			<div class="product_name"><a href="product.html">Something</a></div>
+																			<div class="product_category">In <a href="category.html">Category</a></div>
+																		</div>
+																	</div>
+																	<div class="ml-auto text-right">
+																		<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+																		<div class="product_price text-right">$3<span>.99</span></div>
+																	</div>
+																</div>
+																<div class="product_buttons">
+																	<div class="text-right d-flex flex-row align-items-start justify-content-start">
+																		<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/heart.svg" alt=""><div>+</div></div></div>
+																		</div>
+																		<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/cart_2.svg" alt=""><div>+</div></div></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="home_item_side"><a href="product.html"><img src="https://images.pexels.com/photos/260485/pexels-photo-260485.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""></a></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="col-md-7">
-						<form th:action="@{/search}">
-							<input class="input" placeholder="Search here">
 
-							<button type="button" name="button" class="search-btn">
-								<a href="typeWindow.html" style="color: white">Search</a>
-							</button>
-						</form>
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image" style="background-image:url(images/home.jpg)"></div>
+						<div class="container fill_height">
+							<div class="row fill_height">
+								<div class="col fill_height">
+									<div class="home_container d-flex flex-column align-items-center justify-content-start">
+										<div class="home_content">
+											<div class="home_title">Popular</div>
+											<div class="home_subtitle">Birthday Gift</div>
+											<div class="home_items">
+												<div class="row">
+													<div class="col-sm-3 offset-lg-1">
+														<div class="home_item_side"><a href="product.html"><img src="https://images.pexels.com/photos/1857157/pexels-photo-1857157.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""></a></div>
+													</div>
+													<div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
+														<div class="product home_item_large">
+															<div class="product_tag d-flex flex-column align-items-center justify-content-center">
+																<div>
+																	<div>from</div>
+																	<div>$3<span>.99</span></div>
+																</div>
+															</div>
+															<div class="product_image"><img src="https://images.pexels.com/photos/2072153/pexels-photo-2072153.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""></div>
+															<div class="product_content">
+																<div class="product_info d-flex flex-row align-items-start justify-content-start">
+																	<div>
+																		<div>
+																			<div class="product_name"><a href="product.html">Cool Clothing with Brown Stripes</a></div>
+																			<div class="product_category">In <a href="category.html">Category</a></div>
+																		</div>
+																	</div>
+																	<div class="ml-auto text-right">
+																		<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+																		<div class="product_price text-right">$3<span>.99</span></div>
+																	</div>
+																</div>
+																<div class="product_buttons">
+																	<div class="text-right d-flex flex-row align-items-start justify-content-start">
+																		<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/heart.svg" alt=""><div>+</div></div></div>
+																		</div>
+																		<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/cart_2.svg" alt=""><div>+</div></div></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="home_item_side"><a href="product.html"><img src="https://images.pexels.com/photos/264787/pexels-photo-264787.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""></a></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="col-md-3" style="text-align: center">
+
+					<!-- Slide -->
+					<div class="owl-item">
+						<div class="background_image" style="background-image:url(images/home.jpg)"></div>
+						<div class="container fill_height">
+							<div class="row fill_height">
+								<div class="col fill_height">
+									<div class="home_container d-flex flex-column align-items-center justify-content-start">
+										<div class="home_content">
+											<div class="home_title">Trendsetters</div>
+											<div class="home_subtitle">Wedding Gift</div>
+											<div class="home_items">
+												<div class="row">
+													<div class="col-sm-3 offset-lg-1">
+														<div class="home_item_side"><a href="product.html"><img src="https://images.pexels.com/photos/313707/pexels-photo-313707.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""></a></div>
+													</div>
+													<div class="col-lg-4 col-md-6 col-sm-8 offset-sm-2 offset-md-0">
+														<div class="product home_item_large">
+															<div class="product_tag d-flex flex-column align-items-center justify-content-center">
+																<div>
+																	<div>from</div>
+																	<div>$3<span>.99</span></div>
+																</div>
+															</div>
+															<div class="product_image"><img src="https://images.pexels.com/photos/169192/pexels-photo-169192.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""></div>
+															<div class="product_content">
+																<div class="product_info d-flex flex-row align-items-start justify-content-start">
+																	<div>
+																		<div>
+																			<div class="product_name"><a href="product.html">Cool Clothing with Brown Stripes</a></div>
+																			<div class="product_category">In <a href="category.html">Category</a></div>
+																		</div>
+																	</div>
+																	<div class="ml-auto text-right">
+																		<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+																		<div class="product_price text-right">$3<span>.99</span></div>
+																	</div>
+																</div>
+																<div class="product_buttons">
+																	<div class="text-right d-flex flex-row align-items-start justify-content-start">
+																		<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/heart.svg" alt=""><div>+</div></div></div>
+																		</div>
+																		<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+																			<div><div><img src="images/cart_2.svg" alt=""><div>+</div></div></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-sm-3">
+														<div class="home_item_side"><a href="product.html"><img src="https://images.pexels.com/photos/1616113/pexels-photo-1616113.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt=""></a></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<div class="home_slider_nav home_slider_nav_prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+				<div class="home_slider_nav home_slider_nav_next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+
+				<!-- Home Slider Dots -->
+
+				<div class="home_slider_dots_container">
+					<div class="container">
 						<div class="row">
-							<div class="col-6">
-
-								<a href="#">
-									<div class="icons">
-										<i class="fas fa-shopping-basket"></i>
-									</div> <span> Your cart </span>
-								</a>
-
-							</div>
-							<div class="col-6" th:if="${session.username}">
-								<div class="icons">
-										<i class="fas fa-user-edit"></i>
-									</div>
-								<div class="dropdown">
-									<button type="button" class="btn btn-primary dropdown-toggle"
-										data-toggle="dropdown"><span>Hi, <span th:utext="${session.username}"></span></span></button>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" th:href="@{/logout}">Logout</a> <a
-											class="dropdown-item" href="#">Edit</a> 
-									</div>
+							<div class="col">
+								<div class="home_slider_dots">
+									<ul id="home_slider_custom_dots" class="home_slider_custom_dots d-flex flex-row align-items-center justify-content-center">
+										<li class="home_slider_custom_dot active">01</li>
+										<li class="home_slider_custom_dot">02</li>
+										<li class="home_slider_custom_dot">03</li>
+									</ul>
 								</div>
-							</div>
-							<div class="col-6" th:unless="${session.username}">
-							<div class="icons">
-										<i class="fas fa-user-edit"></i>
-									</div>
-								<div class="dropdown">
-									<button type="button" class="btn btn-primary dropdown-toggle"
-										data-toggle="dropdown">Account</button>
-									<div class="dropdown-menu">
-										<a class="dropdown-item" th:href="@{/login}">Login</a> <a
-											class="dropdown-item" th:href="@{/register}">Register</a> 
-									</div>
-								</div>
-								
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</nav>
-	</section>
 
-	<section>
-
-		<div id="s1">
-			<div id="cool-down">
-				<div class="cd-time">
-					<span id="days"></span> <span class="cd-txt">days</span>
-				</div>
-				<div class="cd-time">
-					<span id="hours"></span> <span class="cd-txt">hours</span>
-				</div>
-				<div class="cd-time">
-					<span id="mins"></span> <span class="cd-txt">mins</span>
-				</div>
-				<div class="cd-time">
-					<span id="secs"></span> <span class="cd-txt">secs</span>
-				</div>
-			</div>
-			<div id="hot-deal">
-				<h2>Christmas</h2>
-				<span>new collection up to 50% off</span><br> <a href="#"
-					class="btn btn-rounded btn-danger">shop now</a>
 			</div>
 		</div>
-		<div class="container categories">
-			<div class="row">
-				<div class="back-gr"></div>
-				<div class="col-6 cate-pro">
-					<a href="#" style=""> <img class="banner"
-						th:src="@{/images/banner-1.png}" alt=""> <img
-						class="inner-banner"
-						src="https://ld-magento.template-help.com/magento_62086/pub/static/frontend/TemplateMonster/theme015/en_US/images/banner-1-3.png"
-						alt="">
-					</a>
-				</div>
-				<div class="col-6 cate-pro">
-					<a href="#" style=""> <img class="banner"
-						th:src="@{/images/banner-2.png}" alt=""> <img
-						class="inner-banner"
-						src="https://ld-magento.template-help.com/magento_62086/pub/static/frontend/TemplateMonster/theme015/en_US/images/banner-2-3.png"
-						alt="">
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="list-product slider">
-			<div class="row">
-				<th:block th:each="product : ${listProduct}">
-					<div class="col-4">
-						<div class="product">
-							<div class="im">
-								<img class="image" th:src="${product.imgUrl}" width="100%"
-									alt=""> <img class="hot"
-									src="https://www.iconsdb.com/icons/preview/color/4080FF/new-badge-2-xxl.png"
-									width="100%" alt="">
-								<div class="basket">
-									<a href="detail.html"><img
-										src="https://www.iconsdb.com/icons/preview/white/eye-3-xxl.png"
-										alt=""></a>
-								</div>
-							</div>
-							<div class="info">
-								<a href="typeWindow.html" class="name">Christmas Tree</a>
-								<div class="price">
-									$<span th:utext="${product.price}"></span>
-								</div>
-								<div class="star-rate">
-									<div class="star-inner"></div>
-									<div class="count"></div>
-								</div>
-							</div>
-							<div class="brand">
-								<a href="#" class="btn btn-outline-info btn-sm link">Decoration</a>
-								<a href="#" class="btn btn-outline-info btn-sm link">Gift</a>
 
-							</div>
-							<div class="add-cart">
-								<a href="cart.html" class="btn btn-danger"><span>Add
-										to cart</span> <i class="fa fa-cart-plus"></i></a>
-							</div>
-						</div>
-					</div>
-				</th:block>
-			</div>
-		</div>
-	</section>
-	<section>
-		<footer>
+		<!-- Products -->
+
+		<div class="products">
 			<div class="container">
 				<div class="row">
-					<div class="col-4 finfo">
-						<a href="#">privacy policy</a> <a href="#">term & condition</a> <a
-							href="#">about us</a>
+					<div class="col-lg-6 offset-lg-3">
+						<div class="section_title text-center">Popular on Little Closet</div>
 					</div>
-					<div class="col-4">
-						<h1>Merry</h1>
-						<h4>Christmas</h4>
-						<div class="icon-footer row">
-							<a href="#" class="col-4"><img
-								src="https://www.iconsdb.com/icons/preview/black/twitter-3-xl.png"
-								alt=""></a> <a href="#" class="col-4"><img
-								src="https://www.iconsdb.com/icons/preview/black/pinterest-3-xl.png"
-								alt=""></a> <a href="#" class="col-4"><img
-								src="https://www.iconsdb.com/icons/preview/black/instagram-xl.png"
-								alt=""></a>
+				</div>
+				<div class="row page_nav_row">
+					<div class="col">
+						<div class="page_nav">
+							<ul class="d-flex flex-row align-items-start justify-content-center">
+								<li class="active"><a href="category.html">Women</a></li>
+								<li><a href="category.html">Men</a></li>
+								<li><a href="category.html">Kids</a></li>
+								<li th:if="${session.role}==true"> <a th:href="@{/listproduct}">List Product</a></li>
+							</ul>
 						</div>
-						<div class="row">
-							<div class="col-6" id="div"></div>
+					</div>
+				</div>
+				<div class="row products_row">
+					<th:block th:each="product, iter : ${listProduct}" th:if="${iter.index}<10">
+					<!-- Product -->
+					<div class="col-xl-4 col-md-6">
+						<div class="product">
+							<div class="product_image"><img th:src="${product.imgUrl}" alt=""></div>
+							<div class="product_content">
+								<div class="product_info d-flex flex-row align-items-start justify-content-start">
+									<div>
+										<div>
+											<div class="product_name"><a href="product.html">Cool Clothing with Brown Stripes</a></div>
+											<div class="product_category">In <a href="category.html">Category</a></div>
+										</div>
+									</div>
+									<div class="ml-auto text-right">
+										<div class="rating_r rating_r_4 home_item_rating"><i></i><i></i><i></i><i></i><i></i></div>
+										<div class="product_price text-right">$<span th:utext="${product.price}"> </span></div>
+									</div>
+								</div>
+								<div class="product_buttons">
+									<div class="text-right d-flex flex-row align-items-start justify-content-start">
+										<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+											<div><div><img src="images/heart_2.svg" class="svg" alt=""><div>+</div></div></div>
+										</div>
+										<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+											<div><div><img src="images/cart.svg" class="svg" alt=""><div>+</div></div></div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="container">
-							<p>weekly newsletter</p>
-							<div class="bor email">name@email.com</div>
-							<div class="bor">subscribe</div>
+					</div>
+					</th:block>
+
+
+
+				</div>
+				<div class="row load_more_row">
+					<div class="col">
+						<div class="button load_more ml-auto mr-auto"><a href="#">load more</a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Boxes -->
+
+		<div class="boxes">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="boxes_container d-flex flex-row align-items-start justify-content-between flex-wrap">
+
+							<!-- Box -->
+							<div class="box">
+								<div class="background_image" style="background-image:url(images/box_1.jpg)"></div>
+								<div class="box_content d-flex flex-row align-items-center justify-content-start">
+									<div class="box_left">
+										<div class="box_image">
+											<a href="category.html">
+												<div class="background_image" style="background-image:url(images/box_1_img.jpg)"></div>
+											</a>
+										</div>
+									</div>
+									<div class="box_right text-center">
+										<div class="box_title">Trendsetter Collection</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Box -->
+							<div class="box">
+								<div class="background_image" style="background-image:url(images/box_2.jpg)"></div>
+								<div class="box_content d-flex flex-row align-items-center justify-content-start">
+									<div class="box_left">
+										<div class="box_image">
+											<a href="category.html">
+												<div class="background_image" style="background-image:url(images/box_2_img.jpg)"></div>
+											</a>
+										</div>
+									</div>
+									<div class="box_right text-center">
+										<div class="box_title">Popular Choice</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Box -->
+							<div class="box">
+								<div class="background_image" style="background-image:url(images/box_3.jpg)"></div>
+								<div class="box_content d-flex flex-row align-items-center justify-content-start">
+									<div class="box_left">
+										<div class="box_image">
+											<a href="category.html">
+												<div class="background_image" style="background-image:url(images/box_3_img.jpg)"></div>
+											</a>
+										</div>
+									</div>
+									<div class="box_right text-center">
+										<div class="box_title">Popular Choice</div>
+									</div>
+								</div>
+							</div>
+
 						</div>
-						<div class="row icon-footer">
-							<a href="#" class="col-3"><img
-								src="https://www.iconsdb.com/icons/preview/black/amex-xxl.png"
-								alt=""></a> <a href="#" class="col-3"><img
-								src="https://www.iconsdb.com/icons/preview/black/paypal-3-xxl.png"
-								alt=""></a> <a href="#" class="col-3"><img
-								src="https://www.iconsdb.com/icons/preview/black/mastercard-xxl.png"
-								alt=""></a> <a href="#" class="col-3"><img
-								src="https://www.iconsdb.com/icons/preview/black/visa-xxl.png"
-								alt=""></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Features -->
+
+		<div class="features">
+			<div class="container">
+				<div class="row">
+
+					<!-- Feature -->
+					<div class="col-lg-4 feature_col">
+						<div class="feature d-flex flex-row align-items-start justify-content-start">
+							<div class="feature_left">
+								<div class="feature_icon"><img src="images/icon_1.svg" alt=""></div>
+							</div>
+							<div class="feature_right d-flex flex-column align-items-start justify-content-center">
+								<div class="feature_title">Fast Secure Payments</div>
+							</div>
 						</div>
-						<div class="copyright">&copy 2019</div>
 					</div>
 
-					<div class="col-4 finfo">
-						<a href="#">shipping info</a> <a href="#">returns/exchanges</a> <a
-							href="#">contact</a>
+					<!-- Feature -->
+					<div class="col-lg-4 feature_col">
+						<div class="feature d-flex flex-row align-items-start justify-content-start">
+							<div class="feature_left">
+								<div class="feature_icon ml-auto mr-auto"><img src="images/icon_2.svg" alt=""></div>
+							</div>
+							<div class="feature_right d-flex flex-column align-items-start justify-content-center">
+								<div class="feature_title">Premium Products</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Feature -->
+					<div class="col-lg-4 feature_col">
+						<div class="feature d-flex flex-row align-items-start justify-content-start">
+							<div class="feature_left">
+								<div class="feature_icon"><img src="images/icon_3.svg" alt=""></div>
+							</div>
+							<div class="feature_right d-flex flex-column align-items-start justify-content-center">
+								<div class="feature_title">Free Delivery</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+
+		<footer class="footer">
+			<div class="footer_content">
+				<div class="container">
+					<div class="row">
+
+						<!-- About -->
+						<div class="col-lg-4 footer_col">
+							<div class="footer_about">
+								<div class="footer_logo">
+									<a href="#">
+										<div class="d-flex flex-row align-items-center justify-content-start">
+											<div class="footer_logo_icon"><img src="images/logo_2.png" alt=""></div>
+											<div>Little Closet</div>
+										</div>
+									</a>
+								</div>
+								<div class="footer_about_text">
+									<p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse potenti. Fusce venenatis vel velit vel euismod.</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Footer Links -->
+						<div class="col-lg-4 footer_col">
+							<div class="footer_menu">
+								<div class="footer_title">Support</div>
+								<ul class="footer_list">
+									<li>
+										<a href="#"><div>Customer Service<div class="footer_tag_1">online now</div></div></a>
+									</li>
+									<li>
+										<a href="#"><div>Return Policy</div></a>
+									</li>
+									<li>
+										<a href="#"><div>Size Guide<div class="footer_tag_2">recommended</div></div></a>
+									</li>
+									<li>
+										<a href="#"><div>Terms and Conditions</div></a>
+									</li>
+									<li>
+										<a href="#"><div>Contact</div></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Footer Contact -->
+						<div class="col-lg-4 footer_col">
+							<div class="footer_contact">
+								<div class="footer_title">Stay in Touch</div>
+								<div class="newsletter">
+									<form action="#" id="newsletter_form" class="newsletter_form">
+										<input type="email" class="newsletter_input" placeholder="Subscribe to our Newsletter" required="required">
+										<button class="newsletter_button">+</button>
+									</form>
+								</div>
+								<div class="footer_social">
+									<div class="footer_title">Social</div>
+									<ul class="footer_social_list d-flex flex-row align-items-start justify-content-start">
+										<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+										<li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+										<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+										<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer_bar">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="footer_bar_content d-flex flex-md-row flex-column align-items-center justify-content-start">
+								<div class="copyright order-md-1 order-2"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+								<nav class="footer_nav ml-md-auto order-md-2 order-1">
+									<ul class="d-flex flex-row align-items-center justify-content-start">
+										<li><a href="category.html">Women</a></li>
+										<li><a href="category.html">Men</a></li>
+										<li><a href="category.html">Kids</a></li>
+										<li th:if="${session.role}==true"> <a th:href="@{/listproduct}">List Product</a></li>
+										<li><a href="#">Contact</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</footer>
-	</section>
+	</div>
+
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="css/bootstrap-4.1.2/popper.js"></script>
+<script src="css/bootstrap-4.1.2/bootstrap.min.js"></script>
+<script src="plugins/greensock/TweenMax.min.js"></script>
+<script src="plugins/greensock/TimelineMax.min.js"></script>
+<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="plugins/greensock/animation.gsap.min.js"></script>
+<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/progressbar/progressbar.min.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="js/custom.js"></script>
 </body>
+</html>
