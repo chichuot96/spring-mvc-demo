@@ -140,4 +140,9 @@ public class MainController {
 		return "list-product";
 	}
 	
+	@RequestMapping(value= {"/cart"}, method=RequestMethod.GET)
+	public String cart(Model model,HttpServletRequest request) {
+		return "cart";
+	}
+	
 }

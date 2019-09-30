@@ -93,12 +93,12 @@
 		width: 25px;
 		height: 25px;
 	}
-	.user a > div
+	.user button > div
 	{
 		width: 26px;
 		height: 26px;
 	}
-	.user a > div > div
+	.user button > div > div, .cart a > div > div
 	{
 		width: 18px;
 		height: 18px;
@@ -360,7 +360,7 @@
 	{
 		margin-right: 15px;
 	}
-	.user a > div,
+	.user button > div,
 	.cart a > div
 	{
 		width: 24px;
